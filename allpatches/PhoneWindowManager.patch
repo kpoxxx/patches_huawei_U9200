@@ -1,0 +1,45 @@
+diff --git a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
+index 7415a1f..f16615e 100644
+--- a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
++++ b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
+@@ -2222,10 +2222,16 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+             }
+         }
+ 
+-        if (keyCode == KeyEvent.KEYCODE_BACK && !down) {
+-            mHandler.removeCallbacks(mBackLongPress);
++        if (keyCode == KeyEvent.KEYCODE_BACK) {
++            if (down && repeatCount == 0) {
++                performHapticFeedbackLw(null, HapticFeedbackConstants.KEYBOARD_TAP, false);
++            } 
++            else if (!down) {
++                mHandler.removeCallbacks(mBackLongPress);
++            }
+         }
+ 
++
+         // Specific device key handling
+         if (mDeviceKeyHandler != null) {
+             try {
+@@ -2302,6 +2308,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+                 }
+             }
+             if (down) {
++                if (repeatCount == 0) {
++                    performHapticFeedbackLw(null, HapticFeedbackConstants.KEYBOARD_TAP, false);
++                } 
++
+                 if (!mRecentAppsPreloaded && mLongPressOnHomeBehavior == KEY_ACTION_APP_SWITCH) {
+                     preloadRecentApps();
+                 }
+@@ -2322,6 +2332,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+             final int chordBug = KeyEvent.META_SHIFT_ON;
+ 
+             if (down) {
++                 if (repeatCount == 0) {
++                    performHapticFeedbackLw(null, HapticFeedbackConstants.KEYBOARD_TAP, false);
++                }
++
+                 if (!mRecentAppsPreloaded && (mPressOnMenuBehavior == KEY_ACTION_APP_SWITCH ||
+                         mLongPressOnMenuBehavior == KEY_ACTION_APP_SWITCH)) {
+                     preloadRecentApps();
