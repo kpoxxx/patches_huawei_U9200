@@ -18,6 +18,12 @@ case "$DISTR" in
   "CyanogenMod")
     echo "---=== CyanogenMod ===---"
     bluez_port_cm101/cm101_bluez_patch.sh $DSTDIR
+
+    # Vibe patch
+    echo ""
+    echo "Applying Vibe patch"
+    cat allpatches/PhoneWindowManager.patch | patch -d $DSTDIR/frameworks/base -p1 -N -r -
+
     ;;
   "MoKee OpenSource")
     echo "---=== MoKee OpenSource ===---"
@@ -26,6 +32,13 @@ case "$DISTR" in
   "PAC-man - The AIO ROM")
     echo "---=== PAC-man - The AIO ROM ===---"
     bluez_port_pac/pac_bluez_patch.sh $DSTDIR
+    cp -f allpatches/cm_frameworks_config_overlay.xml $DSTDIR/vendor/cm/overlay/common/frameworks/base/core/res/res/values/config.xml
+
+    # Vibe patch
+    echo ""
+    echo "Applying Vibe patch"
+    cat allpatches/PhoneWindowManager_pac.patch | patch -d $DSTDIR/frameworks/base -p1 -N -r -
+
     ;;
   *)
     echo "*================== Error!!! =================*"
@@ -60,11 +73,6 @@ cat allpatches/Camera.patch | patch -d $DSTDIR/packages/apps/Camera -p1 -N -r -
 echo ""
 echo "Applying SurfaceFlinger patch"
 cat allpatches/SurfaceFlinger.patch | patch -d $DSTDIR/frameworks/native -p1 -N -r -
-
-# Vibe patch
-echo ""
-echo "Applying Vibe patch"
-cat allpatches/PhoneWindowManager.patch | patch -d $DSTDIR/frameworks/base -p1 -N -r -
 
 # if not removed - there will be errors
 echo ""
