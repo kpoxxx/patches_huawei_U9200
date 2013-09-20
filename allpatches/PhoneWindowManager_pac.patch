@@ -1,0 +1,26 @@
+diff --git a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
+index 7415a1f..f16615e 100644
+--- a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
++++ b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
+@@ -2440,6 +2440,10 @@
+                 }
+             }
+             if (down) {
++                if (repeatCount == 0) {
++                    performHapticFeedbackLw(null, HapticFeedbackConstants.KEYBOARD_TAP, false);
++                } 
++
+                 if (!mRecentAppsPreloaded && mLongPressOnHomeBehavior == KEY_ACTION_APP_SWITCH) {
+                     preloadRecentApps();
+                 }
+@@ -2460,6 +2464,10 @@
+             final int chordBug = KeyEvent.META_SHIFT_ON;
+ 
+             if (down) {
++                 if (repeatCount == 0) {
++                    performHapticFeedbackLw(null, HapticFeedbackConstants.KEYBOARD_TAP, false);
++                }
++
+                 if (!mRecentAppsPreloaded && (mPressOnMenuBehavior == KEY_ACTION_APP_SWITCH ||
+                         mLongPressOnMenuBehavior == KEY_ACTION_APP_SWITCH)) {
+                     preloadRecentApps();
