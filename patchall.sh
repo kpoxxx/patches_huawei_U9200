@@ -24,6 +24,12 @@ case "$DISTR" in
     echo "Applying Vibe patch"
     cat allpatches/PhoneWindowManager.patch | patch -d $DSTDIR/frameworks/base -p1 -N -r -
 
+    # Show Network Speed patch
+    echo ""
+    echo "Applying Show Network Speed patch (by realmenvvs 4pda)"
+    cp  allpatches/traffic/Traffic.java $DSTDIR/frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/policy
+    cat allpatches/traffic/traffic.patch | patch -d $DSTDIR -p1 -N -r -
+
     ;;
   "MoKee OpenSource")
     echo "---=== MoKee OpenSource ===---"
