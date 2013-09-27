@@ -34,6 +34,10 @@ case "$DISTR" in
     cp  allpatches/traffic/Traffic.java $DSTDIR/frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/policy
     cat allpatches/traffic/traffic.patch | patch -d $DSTDIR -p1 -N -r -
 
+    echo ""
+    echo "${grn}transparency of the bottom field (by holl 4pda)${txtrst}"
+    cat allpatches/PhoneTransparencyButtom.patch | patch -d $DSTDIR/packages/apps/Phone -p1 -N -r -
+
     ;;
   "MoKee OpenSource")
     echo "${grn}---=== MoKee OpenSource ===---${txtrst}"
