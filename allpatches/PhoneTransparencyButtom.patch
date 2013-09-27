@@ -1,0 +1,44 @@
+diff --git a/res/layout/incall_touch_ui.xml b/res/layout/incall_touch_ui.xml
+index c0dd3ce..072d8d0 100644
+--- a/res/layout/incall_touch_ui.xml
++++ b/res/layout/incall_touch_ui.xml
+@@ -222,8 +222,8 @@
+         android:layout_height="wrap_content"
+         android:layout_gravity="center|bottom"
+         android:layout_marginTop="20dip"
+-        android:layout_marginBottom="-46dp"
+-        android:background="@color/incall_call_banner_background"
++        android:layout_marginBottom="-78.0dip"
++        android:background="@color/incall_call_banner_background_bottom"
+         android:visibility="gone"
+         android:gravity="top"
+ 
+@@ -231,6 +231,7 @@
+         prvandroid:targetDescriptions="@array/incoming_call_widget_3way_target_descriptions"
+         prvandroid:directionDescriptions="@array/incoming_call_widget_3way_direction_descriptions"
+         prvandroid:handleDrawable="@drawable/ic_in_call_touch_handle"
++
+         prvandroid:innerRadius="@*android:dimen/glowpadview_inner_radius"
+         prvandroid:outerRadius="@*android:dimen/glowpadview_target_placement_radius"
+         prvandroid:outerRingDrawable="@*android:drawable/ic_lockscreen_outerring"
+diff --git a/res/layout/primary_call_info.xml b/res/layout/primary_call_info.xml
+index 099f19e..1ad7842 100644
+--- a/res/layout/primary_call_info.xml
++++ b/res/layout/primary_call_info.xml
+@@ -86,6 +86,7 @@
+             android:layout_height="wrap_content"
+             android:paddingRight="@dimen/call_banner_name_number_right_padding"
+             android:textAppearance="?android:attr/textAppearanceMedium"
++            android:textSize="22.0dip"
+             android:textColor="@color/incall_call_banner_text_color"
+             android:singleLine="true" />
+ 
+@@ -100,7 +101,7 @@
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:textAppearance="?android:attr/textAppearanceSmall"
+-                android:textColor="@color/incall_call_banner_text_color"
++                android:textColor="@color/incall_callTypeSip"
+                 android:singleLine="true" />
+             <TextView android:id="@+id/label"
+                 android:layout_width="wrap_content"
