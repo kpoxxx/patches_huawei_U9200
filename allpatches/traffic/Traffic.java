@@ -117,6 +117,10 @@ public class Traffic extends TextView {
             @Override
             public void handleMessage(Message msg) {
                 speed = (getTotalReceivedBytes() - totalRxBytes) / 1024 / 3;
+                if (speed < 0) {
+                    speed = 0;
+                }
+
                 totalRxBytes = getTotalReceivedBytes();
 
                 DecimalFormat DecimalFormatfnum = new DecimalFormat("##0.00");
