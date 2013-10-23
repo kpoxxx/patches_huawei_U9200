@@ -88,6 +88,11 @@ echo ""
 echo "${grn}Applying SurfaceFlinger patch${txtrst}"
 cat allpatches/SurfaceFlinger.patch | patch -d $DSTDIR/frameworks/native -p1 -N -r -
 
+# WiFi Country patch
+echo ""
+echo "${grn}Applying WiFi Country patch${txtrst}"
+cat allpatches/WiFi_Country.patch | patch -d $DSTDIR/frameworks/opt/telephony -p1 -N -r -
+
 # if not removed - there will be errors
 echo ""
 echo "${grn}Remove *.orig files${txtrst}"
