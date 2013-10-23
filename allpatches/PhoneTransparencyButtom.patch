@@ -9,7 +9,7 @@ index c0dd3ce..072d8d0 100644
 -        android:layout_marginBottom="-46dp"
 -        android:background="@color/incall_call_banner_background"
 +        android:layout_marginBottom="-78.0dip"
-+        android:background="@color/incall_call_banner_background_bottom"
++        android:background="@color/incall_call_banner_background"
          android:visibility="gone"
          android:gravity="top"
  
