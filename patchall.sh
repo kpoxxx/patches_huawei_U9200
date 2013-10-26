@@ -38,6 +38,11 @@ case "$DISTR" in
     echo "${grn}transparency of the bottom field (by holl 4pda)${txtrst}"
     cat allpatches/PhoneTransparencyButtom.patch | patch -d $DSTDIR/packages/apps/Phone -p1 -N -r -
 
+    # Allowed to provide the name CM_BUILDTYPE
+    echo ""
+    echo "${grn}Allowed to provide the name CM_BUILDTYPE${txtrst}"
+    cat allpatches/CM_BUILDTYPE.patch | patch -d $DSTDIR/vendor/cm -p1 -N -r -
+
     ;;
   "MoKee OpenSource")
     echo "${grn}---=== MoKee OpenSource ===---${txtrst}"
