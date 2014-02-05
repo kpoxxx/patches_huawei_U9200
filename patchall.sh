@@ -43,6 +43,10 @@ case "$DISTR" in
     echo "${grn}Allowed to provide the name CM_BUILDTYPE${txtrst}"
     cat allpatches/CM_BUILDTYPE.patch | patch -d $DSTDIR/vendor/cm -p1 -N -r -
 
+    # Allow to make their BUILD_DISPLAY_ID
+    echo ""
+    echo "${grn}Applying BUILD_DISPLAY_ID patch${txtrst}"
+    cat allpatches/BUILD_DISPLAY_ID.patch | patch -d $DSTDIR/build -p1 -N -r -
     ;;
   "MoKee OpenSource")
     echo "${grn}---=== MoKee OpenSource ===---${txtrst}"
@@ -58,6 +62,10 @@ case "$DISTR" in
     echo "${grn}Applying Vibe patch${txtrst}"
     cat allpatches/PhoneWindowManager_pac.patch | patch -d $DSTDIR/frameworks/base -p1 -N -r -
 
+    # Allow to make their BUILD_DISPLAY_ID
+    echo ""
+    echo "${grn}Applying BUILD_DISPLAY_ID patch${txtrst}"
+    cat allpatches/BUILD_DISPLAY_ID.patch | patch -d $DSTDIR/build -p1 -N -r -
     ;;
   *)
     echo "${red}*================== Error!!! ================*"
@@ -79,24 +87,24 @@ cp allpatches/geoloc/86_zh $DSTDIR/external/libphonenumber/java/src/com/android/
 cp allpatches/geoloc/PhoneNumberMetadataProto_CN $DSTDIR/external/libphonenumber/java/src/com/android/i18n/phonenumbers/data/PhoneNumberMetadataProto_CN
 
 # EMUI Gallery/Camera patch
-echo ""
-echo "${grn}Applying EMUI Gallery/Camera patch${txtrst}"
-cat allpatches/EMUI_Gallery2.patch | patch -d $DSTDIR/frameworks/base -p1 -N -r -
+#echo ""
+#echo "${grn}Applying EMUI Gallery/Camera patch${txtrst}"
+#cat allpatches/EMUI_Gallery2.patch | patch -d $DSTDIR/frameworks/base -p1 -N -r -
 
 # Camera patch
 echo ""
 echo "${grn}Applying Camera patch${txtrst}"
 cat allpatches/Camera.patch | patch -d $DSTDIR/packages/apps/Camera -p1 -N -r -
 
-# SurfaceFlinger patch
-echo ""
-echo "${grn}Applying SurfaceFlinger patch${txtrst}"
-cat allpatches/SurfaceFlinger.patch | patch -d $DSTDIR/frameworks/native -p1 -N -r -
-
 # WiFi Country patch
 echo ""
 echo "${grn}Applying WiFi Country patch${txtrst}"
 cat allpatches/WiFi_Country.patch | patch -d $DSTDIR/frameworks/opt/telephony -p1 -N -r -
+
+# Ramdisk patch
+echo ""
+echo "${grn}Applying Ramdisk patch${txtrst}"
+cat allpatches/ramdisk.patch | patch -d $DSTDIR/system/core -p1 -N -r -
 
 # if not removed - there will be errors
 echo ""
